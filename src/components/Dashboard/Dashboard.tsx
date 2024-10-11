@@ -1,19 +1,30 @@
 "use client";
 import React from "react";
 import ReviewChart from "../Charts/ReviewChart";
-import TopYearlyRepeatReviewers from "../Tables/TopYearlyRepeatReviewers";
+import TopRepeatingReviewers from "../Tables/TopRepeatingReviewers";
 import CardDataStats from "../CardDataStats";
 import RecentReviews from "../Tables/RecentReview";
 import WordCloud from "../WordCloud/WordCloud";
 import DetailedReviewChart from "../Charts/DetailedReviewChart";
 import { UserIcon, StarIcon, EyeIcon, TrendIcon } from "../../assets/Assets";
 import { Star, StarHalf } from 'lucide-react';
+import { useLatestReviews, useTotalScore, useReviewsCount } from '@/hooks/useReviews';
 
 const Dashboard: React.FC = () => {
-  const renderStars = (rating: number) => {
+  const { data: scoreData } = useTotalScore();
+  const { data: countData } = useReviewsCount();
+  const { data: reviewsData } = useLatestReviews(5);
+
+  console.log(scoreData?.data?.total_score);
+  console.log(countData?.data?.reviews_count);
+  console.log(reviewsData?.data?.reviews);
+  // Check in your Next.js project
+  console.log("This is env variable", process.env.NEXT_PUBLIC_API_BASE_URL);
+
+  const renderStars = (rating: number | undefined) => {
     const stars = [];
-    const fullStars = Math.floor(rating);
-    const hasHalfStar = rating % 1 !== 0;
+    const fullStars = Math.floor(rating ? rating : 0);
+    const hasHalfStar = rating ? rating : 0 % 1 !== 0;
 
     for (let i = 0; i < fullStars; i++) {
       stars.push(<Star key={i} className="w-4 h-4 fill-yellow-400 text-yellow-400" />);
@@ -29,17 +40,17 @@ const Dashboard: React.FC = () => {
   return (
     <>
       <div className="grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-6 xl:grid-cols-4 2xl:gap-7.5">
-        <CardDataStats title="Rating" total="4.83" image={renderStars(4.83)} rate="0.95%" levelUp>
-          <StarIcon />
+        <CardDataStats title="Rating" total={scoreData?.data?.total_score} image={renderStars(scoreData?.data?.total_score)} rate="0.95%" levelUp>
+          <StarIcon className="fill-primary dark:fill-white" />
         </CardDataStats>
-        <CardDataStats title="Total Review" total="3.456" rate="3.78%" levelUp>
-          <UserIcon />
+        <CardDataStats title="Total Review" total={countData?.data?.reviews_count} rate="3.78%" levelUp>
+          <UserIcon className="fill-primary dark:fill-white" />
         </CardDataStats>
-        <CardDataStats title="Total Visitor" total="1.221" rate="1.31%" levelUp>
-          <EyeIcon />
+        <CardDataStats title="Total Visitor" total={countData?.data?.reviews_count} rate="1.31%" levelUp>
+          <EyeIcon className="fill-primary dark:fill-white" />
         </CardDataStats>
-        <CardDataStats title="Quarter Trend" total="60% Negative" levelDown>
-          <TrendIcon />
+        <CardDataStats title="Quarter Trend" total={countData?.data?.reviews_count} levelDown>
+          <TrendIcon className="fill-primary dark:fill-white" />
         </CardDataStats>
       </div>
 
@@ -53,7 +64,7 @@ const Dashboard: React.FC = () => {
           <WordCloud />
         </div>
         <div className="col-span-12">
-          <TopYearlyRepeatReviewers />
+          <TopRepeatingReviewers />
         </div>
       </div>
     </>

@@ -2,11 +2,10 @@ import React from 'react';
 
 const UserIcon: React.FC<React.SVGProps<SVGSVGElement>> = (props) => (
     <svg
-        className={`${props.className} fill-primary dark:fill-white`}
+        className={props.className}
         width="22"
         height="18"
         viewBox="0 0 22 18"
-        fill="none"
         xmlns="http://www.w3.org/2000/svg"
         {...props}
     >
@@ -24,11 +23,10 @@ const UserIcon: React.FC<React.SVGProps<SVGSVGElement>> = (props) => (
 
 const StarIcon: React.FC<React.SVGProps<SVGSVGElement>> = (props) => (
     <svg
-        className={`${props.className} fill-primary dark:fill-white`}
+        className={props.className}
         width="20"
         height="20"
         viewBox="0 0 18 18"
-        fill="none"
         xmlns="http://www.w3.org/2000/svg"
         {...props}
     >
@@ -40,11 +38,10 @@ const StarIcon: React.FC<React.SVGProps<SVGSVGElement>> = (props) => (
 
 const EyeIcon: React.FC<React.SVGProps<SVGSVGElement>> = (props) => (
     <svg
-        className={`${props.className} fill-primary dark:fill-white`}
+        className={props.className}
         width="22"
         height="16"
         viewBox="0 0 22 16"
-        fill="none"
         xmlns="http://www.w3.org/2000/svg"
         {...props}
     >
@@ -59,11 +56,10 @@ const EyeIcon: React.FC<React.SVGProps<SVGSVGElement>> = (props) => (
 
 const TrendIcon: React.FC<React.SVGProps<SVGSVGElement>> = (props) => (
     <svg
-        className={`${props.className} fill-primary dark:fill-white`}
+        className={props.className}
         width="25"
         height="23"
         viewBox="0 0 25 23"
-        fill="none"
         xmlns="http://www.w3.org/2000/svg"
         {...props}
     >
@@ -72,7 +68,5 @@ const TrendIcon: React.FC<React.SVGProps<SVGSVGElement>> = (props) => (
         />
     </svg>
 );
-
-
 
 export { UserIcon, StarIcon, EyeIcon, TrendIcon };

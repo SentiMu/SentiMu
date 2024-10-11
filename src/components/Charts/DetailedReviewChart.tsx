@@ -50,6 +50,9 @@ const options: ApexOptions = {
 };
 
 const DetailedReviewChart: React.FC = () => {
+
+
+
   const [state, setState] = useState<ChartThreeState>({
     series: [81, 14, 5],
   });

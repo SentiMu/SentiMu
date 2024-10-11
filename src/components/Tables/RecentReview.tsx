@@ -1,52 +1,14 @@
 import React from 'react';
 import Image from 'next/image';
 import { Star, StarHalf } from 'lucide-react';
-
-interface Review {
-    id: number;
-    name: string;
-    time: string;
-    text: string;
-    rating: number;
-    imageUrl: string;
-}
-
-const recentReviews: Review[] = [
-    {
-        id: 1,
-        name: "Devid Heilo",
-        time: "12 min ago",
-        text: "Hello, great product! Just what I needed.",
-        rating: 4.5,
-        imageUrl: "/images/logo/logo-icon.svg"
-    },
-    {
-        id: 2,
-        name: "Henry Fisher",
-        time: "1 hour ago",
-        text: "Excellent service and quality.",
-        rating: 5,
-        imageUrl: "/images/logo/logo-icon.svg"
-    },
-    {
-        id: 3,
-        name: "William Smith",
-        time: "2 hours ago",
-        text: "Good experience overall.",
-        rating: 4,
-        imageUrl: "/images/logo/logo-icon.svg"
-    },
-    {
-        id: 3,
-        name: "William Smith",
-        time: "2 hours ago",
-        text: "Good experience overall.",
-        rating: 4,
-        imageUrl: "/images/logo/logo-icon.svg"
-    }
-];
+import { useLatestReviews } from '@/hooks/useReviews';
 
 const RecentReviews: React.FC = () => {
+
+    const { data: reviewsData } = useLatestReviews(5);
+
+    const recentReviews = reviewsData?.data?.reviews || [];
+
     const renderStars = (rating: number) => {
         const stars = [];
         const fullStars = Math.floor(rating);
@@ -62,7 +24,7 @@ const RecentReviews: React.FC = () => {
 
         return stars;
     };
-    
+
     return (
         <div className="col-span-12 rounded-sm border border-stroke bg-white p-5 h-full shadow-default dark:border-strokedark dark:bg-boxdark xl:col-span-4">
             <div className="mb-6 flex items-start justify-between">
@@ -77,7 +39,7 @@ const RecentReviews: React.FC = () => {
                 {recentReviews.map((review) => (
                     <div key={review.id} className="flex items-start gap-4.5">
                         <div className="h-10 w-10 rounded-full">
-                            <Image src={review.imageUrl} alt={review.name} className="rounded-full" width={50} height={50} />
+                            <Image src={review.image_url} alt={review.name} className="rounded-full" width={50} height={50} />
                         </div>
 
                         <div className="flex flex-1 items-start justify-between">
@@ -90,7 +52,7 @@ const RecentReviews: React.FC = () => {
                                     {renderStars(review.rating)}
                                 </div>
                             </div>
-                            <p className="text-sm text-gray-500">{review.time}</p>
+                            <p className="text-sm text-gray-500">{review.published_at}</p>
                         </div>
                     </div>
                 ))}
