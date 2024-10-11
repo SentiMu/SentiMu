@@ -2,6 +2,7 @@ import React from 'react';
 import Image from 'next/image';
 import { Star, StarHalf } from 'lucide-react';
 import { useLatestReviews } from '@/hooks/useReviews';
+import { formatTime } from '@/utils/data';
 
 const RecentReviews: React.FC = () => {
 
@@ -52,7 +53,7 @@ const RecentReviews: React.FC = () => {
                                     {renderStars(review.rating)}
                                 </div>
                             </div>
-                            <p className="text-sm text-gray-500">{review.published_at}</p>
+                            <p className="text-sm text-gray-500">{formatTime(review.published_at)}</p>
                         </div>
                     </div>
                 ))}
