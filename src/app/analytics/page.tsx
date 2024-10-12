@@ -1,4 +1,6 @@
 import { Metadata } from "next";
+import DefaultLayout from "@/components/Layouts/DefaultLayout";
+import Dashboard from "@/components/Pages/AnalyticsPage";
 
 export const metadata: Metadata = {
   title:
@@ -9,9 +11,9 @@ export const metadata: Metadata = {
 export default function Home() {
   return (
     <>
-      <p>
-        P mamang
-      </p>
+      <DefaultLayout>
+        <Dashboard />
+      </DefaultLayout>
     </>
   );
 }

@@ -1,6 +1,5 @@
 import Link from "next/link";
 import DarkModeSwitcher from "./DarkModeSwitcher";
-import TimelineSwitcher from "./TimelineSwitcher";
 import Image from "next/image";
 
 const Header = (props: {
@@ -101,8 +100,6 @@ const Header = (props: {
             <DarkModeSwitcher />
             {/* <!-- Dark Mode Toggler --> */}
           </ul>
-
-          <TimelineSwitcher />
         </div>
       </div>
     </header>

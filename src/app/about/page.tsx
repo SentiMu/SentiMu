@@ -1,4 +1,6 @@
 import { Metadata } from "next";
+import AboutLayout from "@/components/Layouts/AboutLayout";
+import About from "@/components/Pages/AboutPage";
 
 export const metadata: Metadata = {
   title:
@@ -9,9 +11,9 @@ export const metadata: Metadata = {
 export default function Home() {
   return (
     <>
-      <p>
-        P mamang
-      </p>
+      <AboutLayout>
+        <About />
+      </AboutLayout>
     </>
   );
 }
