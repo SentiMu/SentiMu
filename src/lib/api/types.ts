@@ -24,6 +24,12 @@ export interface WordCloudData {
     color: string | undefined;
 }
 
+export interface OverviewData {
+    positive: number;
+    negative: number;
+    neutral: number;
+}
+
 export interface ApiResponse<T> {
     data: T | null;
     error: string | null;
@@ -47,4 +53,8 @@ export interface DuplicateReviewsResponse {
 
 export interface WordCloudResponse {
     word_cloud: WordCloudData[];
+}
+
+export interface OverviewResponse {
+    status: OverviewData;
 }

@@ -6,10 +6,16 @@ import "@/css/style.css";
 import React from "react";
 import Loader from "@/components/Common/Loader";
 import { Providers } from './providers';
-import { useWordCloud } from '@/hooks/useReviews';
-import { WordCloudData } from "@/lib/api/types";
+import { useWordCloud, useOverview } from '@/hooks/useReviews';
+import { WordCloudData, OverviewData } from "@/lib/api/types";
 
-export const WordCloudContext = React.createContext<WordCloudData[] | null>(null);
+export const DataContext = React.createContext<{
+  wordCloud: WordCloudData[] | null;
+  overview: OverviewData | null;
+}>({
+  wordCloud: null,
+  overview: null,
+});
 
 export default function RootLayout({
   children,
@@ -22,9 +28,9 @@ export default function RootLayout({
       <body suppressHydrationWarning={true}>
         <div className="dark:bg-boxdark-2 dark:text-bodydark">
           <Providers>
-            <WordCloudProvider>
-              {children}
-            </WordCloudProvider>
+            <DataProvider>
+                {children}
+            </DataProvider>
           </Providers>
         </div>
       </body>
@@ -32,17 +38,24 @@ export default function RootLayout({
   );
 }
 
-function WordCloudProvider({ children }: { children: React.ReactNode }) {
-  const { data: wordCloudData, isLoading } = useWordCloud();
-  const wordCloud = wordCloudData?.data?.word_cloud || [];
+function DataProvider({ children }: { children: React.ReactNode }) {
+  const { data: wordCloudData, isLoading: isLoadingWordCloud } = useWordCloud();
+  const { data: overviewData, isLoading: isLoadingOverview } = useOverview();
+
+  const isLoading = isLoadingWordCloud || isLoadingOverview;
 
   if (isLoading) {
     return <Loader isLanding={true} />;
   }
 
+  const contextValue = {
+    wordCloud: wordCloudData?.data?.word_cloud || [],
+    overview: overviewData?.data?.status || null,
+  };
+
   return (
-    <WordCloudContext.Provider value={wordCloud}>
+    <DataContext.Provider value={contextValue}>
       {children}
-    </WordCloudContext.Provider>
+    </DataContext.Provider>
   );
 }

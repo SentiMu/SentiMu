@@ -1,12 +1,12 @@
 import React from 'react';
 import ReactApexChart from 'react-apexcharts';
 import { ApexOptions } from 'apexcharts';
-import { WordCloudContext } from '@/app/layout';
+import { DataContext } from '@/app/layout';
 
 const WordCloud: React.FC = () => {
 
-    const wordCloudData = React.useContext(WordCloudContext);
-    const wordCloud = wordCloudData || [];
+    const wordCloudData = React.useContext(DataContext);
+    const wordCloud = wordCloudData.wordCloud || [];
 
     const options: ApexOptions = {
         chart: {

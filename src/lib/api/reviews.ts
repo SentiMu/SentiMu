@@ -7,7 +7,8 @@ import {
     ScoreResponse, 
     CountResponse, 
     DuplicateReviewsResponse,
-    WordCloudResponse
+    WordCloudResponse,
+    OverviewResponse
 } from "./types";
 
 const API_BASE_URL =
@@ -73,6 +74,16 @@ export class ReviewsApi {
         } catch (error) {
             console.error("Error fetching word cloud:", error);
             return { data: null, error: "Failed to fetch word cloud" };
+        }
+    }
+
+    static async getOverview(): Promise<ApiResponse<OverviewResponse>> {
+        try {
+            const response = await apiClient.get<OverviewResponse>("/overview");
+            return { data: response.data, error: null };
+        } catch (error) {
+            console.error("Error fetching overview:", error);
+            return { data: null, error: "Failed to fetch overview" };
         }
     }
 }

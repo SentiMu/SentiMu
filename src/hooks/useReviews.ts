@@ -36,3 +36,10 @@ export function useWordCloud() {
         queryFn: ReviewsApi.getWordCloud,
     });
 }
+
+export function useOverview() {
+    return useQuery({
+        queryKey: ["overview"],
+        queryFn: ReviewsApi.getOverview,
+    });
+}

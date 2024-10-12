@@ -5,7 +5,7 @@ import TopRepeatingReviewers from "../Tables/TopRepeatingReviewers";
 import CardDataStats from "../CardDataStats";
 import RecentReviews from "../Tables/RecentReview";
 import WordCloud from "../WordCloud/WordCloud";
-import DetailedReviewChart from "../Charts/ReviewChart";
+import DetailedReviewChart from "../Charts/OverviewChart";
 import { UserIcon, StarIcon, EyeIcon, TrendIcon } from "../../assets/Assets";
 import { Star, StarHalf } from 'lucide-react';
 import { useTotalScore, useReviewsCount } from '@/hooks/useReviews';
