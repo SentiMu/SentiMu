@@ -1,3 +1,6 @@
+import { twMerge } from "tailwind-merge";
+import clsx, { ClassValue } from "clsx";
+
 function formatDate(dateStr: string): string {
     const date = new Date(dateStr);
 
@@ -51,6 +54,10 @@ function generateMonthCategories(): string[] {
     }
 
     return categories;
+}
+
+export function cn(...inputs: ClassValue[]) {
+    return twMerge(clsx(inputs));
 }
 
 export { formatDate, formatTime, generateMonthCategories };

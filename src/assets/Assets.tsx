@@ -1,4 +1,5 @@
 import React from 'react';
+import Image from 'next/image';
 
 const UserIcon: React.FC<React.SVGProps<SVGSVGElement>> = (props) => (
     <svg
@@ -69,4 +70,74 @@ const TrendIcon: React.FC<React.SVGProps<SVGSVGElement>> = (props) => (
     </svg>
 );
 
-export { UserIcon, StarIcon, EyeIcon, TrendIcon };
+const Icons = {
+    maps: () => (
+        <Image
+            src="/images/logo/maps.svg"
+            alt="Google Maps"
+            width={100}
+            height={100}
+        />
+    ),
+    sentimu: () => (
+        <svg width="131" height="52" viewBox="0 0 131 52" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M15.5 4H3.5V48H15.5M30.5 43V8L45.5 31.5L61 8V43M76 9V30C76.5 46 99.5 46 100.5 30V9M115.5 4H127.5V48H115.5" stroke="black" stroke-width="7" stroke-linecap="round" stroke-linejoin="round" />
+        </svg>
+    ),
+    x: () => (
+        <Image
+            src="/images/logo/x.svg"
+            alt="X"
+            width={20}
+            height={20}
+        />
+    ),
+    discord: () => (
+        <Image
+            src="/images/logo/discord.svg"
+            alt="Discord"
+            width={20}
+            height={20}
+        />
+    ),
+    telegram: () => (
+        <Image
+            src="/images/logo/telegram.svg"
+            alt="Telegram"
+            width={20}
+            height={20}
+        />
+    ),
+    tiktok: () => (
+        <Image
+            src="/images/logo/tiktok.svg"
+            alt="TikTok"
+            width={20}
+            height={20}
+        />
+    ),
+    instagram: () => (
+        <Image
+            src="/images/logo/instagram.svg"
+            alt="Instagram"
+            width={20}
+            height={20}
+        />
+    ),
+    user: () => (
+        <svg
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="#000000"
+            strokeWidth="2"
+            xmlns="http://www.w3.org/2000/svg"
+        >
+            <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2" />
+            <circle cx="12" cy="7" r="4" />
+        </svg>
+    ),
+};
+
+export { UserIcon, StarIcon, EyeIcon, TrendIcon, Icons };
