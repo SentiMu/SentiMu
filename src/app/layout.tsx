@@ -6,17 +6,19 @@ import "@/css/style.css";
 import React from "react";
 import Loader from "@/components/Common/Loader";
 import { Providers } from './providers';
-import { useRecentReviews , useWordCloud, useOverview } from '@/hooks/useReviews';
-import { ReviewData, WordCloudData, OverviewData } from "@/lib/api/types";
+import { useOverview, useRecentReviews , useWordCloud, useRepeatingReviews } from '@/hooks/useReviews';
+import { OverviewData, ReviewData, WordCloudData, RepeatingReviewsData } from "@/lib/api/types";
 
 export const DataContext = React.createContext<{
+  overview: OverviewData | null;
   recentReviews: ReviewData[] | null;
   wordCloud: WordCloudData[] | null;
-  overview: OverviewData | null;
+  repeatingReviews: RepeatingReviewsData[] | null;
 }>({
+  overview: null,
   recentReviews: null,
   wordCloud: null,
-  overview: null,
+  repeatingReviews: null,
 });
 
 export default function RootLayout({
@@ -41,20 +43,22 @@ export default function RootLayout({
 }
 
 function DataProvider({ children }: { children: React.ReactNode }) {
+  const { data: overviewData, isLoading: isLoadingOverview } = useOverview();
   const { data: reviewsData, isLoading: isLoadingReviews } = useRecentReviews(5);
   const { data: wordCloudData, isLoading: isLoadingWordCloud } = useWordCloud();
-  const { data: overviewData, isLoading: isLoadingOverview } = useOverview();
+  const { data: repeatingReviewsData, isLoading: isLoadingRepeatingReviews } = useRepeatingReviews();
 
-  const isLoading = isLoadingReviews || isLoadingWordCloud || isLoadingOverview;
+  const isLoading = isLoadingOverview || isLoadingReviews || isLoadingWordCloud || isLoadingRepeatingReviews;
 
   if (isLoading) {
     return <Loader isLanding={true} />;
   }
 
   const contextValue = {
+    overview: overviewData?.data?.status || null,
     recentReviews: reviewsData?.data?.reviews || [],
     wordCloud: wordCloudData?.data?.word_cloud || [],
-    overview: overviewData?.data?.status || null,
+    repeatingReviews: repeatingReviewsData?.data?.duplicate_reviewers || [],
   };
 
   return (

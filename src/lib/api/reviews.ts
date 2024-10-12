@@ -6,7 +6,7 @@ import {
     RecentReviewResponse, 
     ScoreResponse, 
     CountResponse, 
-    DuplicateReviewsResponse,
+    RepeatingReviewsResponse,
     WordCloudResponse,
     OverviewResponse
 } from "./types";
@@ -57,9 +57,9 @@ export class ReviewsApi {
         }
     }
 
-    static async getDuplicateReviewers(): Promise<ApiResponse<DuplicateReviewsResponse>> {
+    static async getRepeatingReviews(): Promise<ApiResponse<RepeatingReviewsResponse>> {
         try {
-            const response = await apiClient.get<DuplicateReviewsResponse>("/duplicate-reviews");
+            const response = await apiClient.get<RepeatingReviewsResponse>("/duplicate-reviews");
             return { data: response.data, error: null };
         } catch (error) {
             console.error("Error fetching duplicate reviewers:", error);

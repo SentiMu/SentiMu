@@ -1,14 +1,12 @@
 import Image from "next/image";
-import { useDuplicateReviewers } from "@/hooks/useReviews";
 import { formatDate } from "@/utils/data";
+import { useContext } from "react";
+import { DataContext } from "@/app/layout";
 
-const TopRepeatingReviewers = () => {
+const RepeatingReviewers = () => {
 
-    const { data: duplicateReviewersData } = useDuplicateReviewers();
-
-    const duplicateReviewers = duplicateReviewersData?.data?.duplicate_reviewers || [];
-
-    console.log(duplicateReviewers);
+    const { repeatingReviews } = useContext(DataContext);
+    const repeatingReviewsData = repeatingReviews || [];
 
     return (
         <div className="rounded-sm border border-stroke bg-white px-5 pb-2.5 pt-6 shadow-default dark:border-strokedark dark:bg-boxdark sm:px-7.5 xl:pb-1">
@@ -37,7 +35,7 @@ const TopRepeatingReviewers = () => {
                         </tr>
                     </thead>
                     <tbody>
-                        {duplicateReviewers.map((packageItem, key) => (
+                        {repeatingReviewsData.map((packageItem, key) => (
                             <tr key={key}>
                                 <td className="flex items-center gap-3 border-b border-[#eee] px-4 py-5 pl-9 dark:border-strokedark xl:pl-11">
                                     <div className="flex-shrink-0">
@@ -121,4 +119,4 @@ const TopRepeatingReviewers = () => {
     );
 };
 
-export default TopRepeatingReviewers;
+export default RepeatingReviewers;

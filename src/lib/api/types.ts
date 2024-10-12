@@ -26,7 +26,7 @@ export interface RecentReviewResponse {
     reviews: ReviewData[];
 }
 
-export interface DuplicateReview{
+export interface RepeatingReviewsData{
     name: string;
     review_count: number;
     latest_review_date: string;
@@ -35,8 +35,8 @@ export interface DuplicateReview{
     reviews: ReviewData[];
 }
 
-export interface DuplicateReviewsResponse {
-    duplicate_reviewers: DuplicateReview[];
+export interface RepeatingReviewsResponse {
+    duplicate_reviewers: RepeatingReviewsData[];
 }
 
 export interface WordCloudData {

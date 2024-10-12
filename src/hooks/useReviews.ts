@@ -23,10 +23,10 @@ export function useReviewsCount() {
     });
 }
 
-export function useDuplicateReviewers() {
+export function useRepeatingReviews() {
     return useQuery({
         queryKey: ["duplicateReviewers"],
-        queryFn: ReviewsApi.getDuplicateReviewers,
+        queryFn: ReviewsApi.getRepeatingReviews,
     });
 }
 

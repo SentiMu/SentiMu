@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 import TimeSeriesChart from "../Charts/TimeSeriesChart";
-import TopRepeatingReviewers from "../Tables/TopRepeatingReviewers";
+import RepeatingReviewers from "../Tables/RepeatingReviewers";
 import CardDataStats from "../CardDataStats";
 import RecentReviews from "../Tables/RecentReview";
 import WordCloud from "../WordCloud/WordCloud";
@@ -57,7 +57,7 @@ const Dashboard: React.FC = () => {
           <WordCloud />
         </div>
         <div className="col-span-12">
-          <TopRepeatingReviewers />
+          <RepeatingReviewers />
         </div>
       </div>
     </>
