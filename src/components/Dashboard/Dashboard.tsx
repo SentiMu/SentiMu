@@ -1,11 +1,11 @@
 "use client";
 import React from "react";
-import ReviewChart from "../Charts/ReviewChart";
+import ReviewChart from "../Charts/TimeSeriesChart";
 import TopRepeatingReviewers from "../Tables/TopRepeatingReviewers";
 import CardDataStats from "../CardDataStats";
 import RecentReviews from "../Tables/RecentReview";
 import WordCloud from "../WordCloud/WordCloud";
-import DetailedReviewChart from "../Charts/DetailedReviewChart";
+import DetailedReviewChart from "../Charts/ReviewChart";
 import { UserIcon, StarIcon, EyeIcon, TrendIcon } from "../../assets/Assets";
 import { Star, StarHalf } from 'lucide-react';
 import { useTotalScore, useReviewsCount } from '@/hooks/useReviews';
