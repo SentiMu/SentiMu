@@ -113,7 +113,7 @@ interface ChartOneState {
   }[];
 }
 
-const ReviewChart: React.FC = () => {
+const TimeSeriesChart: React.FC = () => {
   const series: ChartOneState['series'] = [
     {
       name: "Positive Review",
@@ -175,4 +175,4 @@ const ReviewChart: React.FC = () => {
   );
 };
 
-export default ReviewChart;
+export default TimeSeriesChart;

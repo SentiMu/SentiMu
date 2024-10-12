@@ -1,14 +1,13 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import Image from 'next/image';
 import { Star, StarHalf } from 'lucide-react';
-import { useLatestReviews } from '@/hooks/useReviews';
 import { formatTime } from '@/utils/data';
+import { DataContext } from '@/app/layout';
 
 const RecentReviews: React.FC = () => {
-
-    const { data: reviewsData } = useLatestReviews(5);
-
-    const recentReviews = reviewsData?.data?.reviews || [];
+    
+    const { recentReviews } = useContext(DataContext);
+    const recentReviewsData = recentReviews || [];
 
     const renderStars = (rating: number) => {
         const stars = [];
@@ -37,7 +36,7 @@ const RecentReviews: React.FC = () => {
             </div>
 
             <div className="flex flex-col gap-5">
-                {recentReviews.map((review) => (
+                {recentReviewsData.map((review) => (
                     <div key={review.id} className="flex items-start gap-4.5">
                         <div className="h-10 w-10 rounded-full">
                             <Image src={review.image_url} alt={review.name} className="rounded-full" width={50} height={50} />

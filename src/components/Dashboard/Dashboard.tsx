@@ -1,11 +1,11 @@
 "use client";
 import React from "react";
-import ReviewChart from "../Charts/TimeSeriesChart";
+import TimeSeriesChart from "../Charts/TimeSeriesChart";
 import TopRepeatingReviewers from "../Tables/TopRepeatingReviewers";
 import CardDataStats from "../CardDataStats";
 import RecentReviews from "../Tables/RecentReview";
 import WordCloud from "../WordCloud/WordCloud";
-import DetailedReviewChart from "../Charts/OverviewChart";
+import OverviewChart from "../Charts/OverviewChart";
 import { UserIcon, StarIcon, EyeIcon, TrendIcon } from "../../assets/Assets";
 import { Star, StarHalf } from 'lucide-react';
 import { useTotalScore, useReviewsCount } from '@/hooks/useReviews';
@@ -48,8 +48,8 @@ const Dashboard: React.FC = () => {
       </div>
 
       <div className="mt-4 grid grid-cols-12 gap-4 md:mt-6 md:gap-6 2xl:mt-7.5 2xl:gap-7.5">
-        <DetailedReviewChart />
-        <ReviewChart />
+        <OverviewChart />
+        <TimeSeriesChart />
         <div className="col-span-12 lg:col-span-6">
           <RecentReviews />
         </div>

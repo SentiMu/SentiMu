@@ -2,10 +2,10 @@
 import { ApexOptions } from "apexcharts";
 import React, { useContext } from "react";
 import ReactApexChart from "react-apexcharts";
-import ReviewChartItem from "./OverviewChartItem";
+import OverviewChartItem from "./OverviewChartItem";
 import { DataContext } from "@/app/layout";
 
-const DetailedReviewChart: React.FC = () => {
+const OverviewChart: React.FC = () => {
 
   const { overview } = useContext(DataContext);
 
@@ -79,17 +79,17 @@ const DetailedReviewChart: React.FC = () => {
       {/* End of Chart */}
 
       <div className="-mx-8 flex flex-wrap px-5 items-center justify-center gap-y-5">
-        <ReviewChartItem
+        <OverviewChartItem
           label="Positive"
           percentage={series[0]}
           color="#69AE34"
         />
-        <ReviewChartItem
+        <OverviewChartItem
           label="Negative"
           percentage={series[1]}
           color="#FE6E73"
         />
-        <ReviewChartItem
+        <OverviewChartItem
           label="Neutral"
           percentage={series[2]}
           color="#7D8998"
@@ -99,4 +99,4 @@ const DetailedReviewChart: React.FC = () => {
   );
 };
 
-export default DetailedReviewChart;
+export default OverviewChart;

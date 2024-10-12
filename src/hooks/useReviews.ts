@@ -2,10 +2,10 @@
 import { useQuery } from "@tanstack/react-query";
 import { ReviewsApi } from "@/lib/api/reviews";
 
-export function useLatestReviews(count: number = 5) {
+export function useRecentReviews(count: number = 5) {
     return useQuery({
         queryKey: ["latestReviews", count],
-        queryFn: () => ReviewsApi.getLatestReviews(count),
+        queryFn: () => ReviewsApi.getRecentReviews(count),
     });
 }
 

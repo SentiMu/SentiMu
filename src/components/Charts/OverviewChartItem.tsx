@@ -1,12 +1,12 @@
 import React from 'react';
 
-interface ReviewChartItemProps {
+interface OverviewChartItemProps {
     label: string;
     percentage: number;
     color: string;
 }
 
-const ReviewChartItem: React.FC<ReviewChartItemProps> = ({ label, percentage, color }) => {
+const OverviewChartItem: React.FC<OverviewChartItemProps> = ({ label, percentage, color }) => {
     return (
         <div className="w-full sm:w-1/3 flex items-center justify-center">
             <div className="flex w-full max-w-xs items-center justify-center">
@@ -20,4 +20,4 @@ const ReviewChartItem: React.FC<ReviewChartItemProps> = ({ label, percentage, co
     );
 };
 
-export default ReviewChartItem;
+export default OverviewChartItem;

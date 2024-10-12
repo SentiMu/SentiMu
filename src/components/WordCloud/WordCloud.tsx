@@ -5,8 +5,8 @@ import { DataContext } from '@/app/layout';
 
 const WordCloud: React.FC = () => {
 
-    const wordCloudData = React.useContext(DataContext);
-    const wordCloud = wordCloudData.wordCloud || [];
+    const { wordCloud } = React.useContext(DataContext);
+    const wordCloudData = wordCloud || [];
 
     const options: ApexOptions = {
         chart: {
@@ -25,7 +25,7 @@ const WordCloud: React.FC = () => {
             }
         },
         series: [{
-            data: wordCloud
+            data: wordCloudData
         }],
         plotOptions: {
             treemap: {
@@ -33,7 +33,7 @@ const WordCloud: React.FC = () => {
                 enableShades: false
             }
         },
-        colors: wordCloud.map(item => item.color)
+        colors: wordCloudData.map(item => item.color)
     };
 
     return (

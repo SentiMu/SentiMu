@@ -3,7 +3,7 @@
 import axios from "axios";
 import { 
     ApiResponse, 
-    ReviewsResponse, 
+    RecentReviewResponse, 
     ScoreResponse, 
     CountResponse, 
     DuplicateReviewsResponse,
@@ -43,11 +43,11 @@ export class ReviewsApi {
         }
     }
 
-    static async getLatestReviews(
+    static async getRecentReviews(
         count: number = 5
-    ): Promise<ApiResponse<ReviewsResponse>> {
+    ): Promise<ApiResponse<RecentReviewResponse>> {
         try {
-            const response = await apiClient.get<ReviewsResponse>(
+            const response = await apiClient.get<RecentReviewResponse>(
                 `/latest-reviews/${count}`
             );
             return { data: response.data, error: null };
