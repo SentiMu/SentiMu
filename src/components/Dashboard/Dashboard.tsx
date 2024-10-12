@@ -8,18 +8,11 @@ import WordCloud from "../WordCloud/WordCloud";
 import DetailedReviewChart from "../Charts/DetailedReviewChart";
 import { UserIcon, StarIcon, EyeIcon, TrendIcon } from "../../assets/Assets";
 import { Star, StarHalf } from 'lucide-react';
-import { useLatestReviews, useTotalScore, useReviewsCount } from '@/hooks/useReviews';
+import { useTotalScore, useReviewsCount } from '@/hooks/useReviews';
 
 const Dashboard: React.FC = () => {
   const { data: scoreData } = useTotalScore();
   const { data: countData } = useReviewsCount();
-  const { data: reviewsData } = useLatestReviews(5);
-
-  console.log(scoreData?.data?.total_score);
-  console.log(countData?.data?.reviews_count);
-  console.log(reviewsData?.data?.reviews);
-  // Check in your Next.js project
-  console.log("This is env variable", process.env.NEXT_PUBLIC_API_BASE_URL);
 
   const renderStars = (rating: number | undefined) => {
     const stars = [];
