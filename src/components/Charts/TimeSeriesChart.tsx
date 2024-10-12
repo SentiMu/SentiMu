@@ -3,6 +3,9 @@
 import { ApexOptions } from "apexcharts";
 import React from "react";
 import dynamic from "next/dynamic";
+import { generateMonthCategories } from "@/utils/data";
+import { useContext } from "react";
+import { DataContext } from "@/app/layout";
 
 const ReactApexChart = dynamic(() => import("react-apexcharts"), {
   ssr: false,
@@ -84,10 +87,7 @@ const options: ApexOptions = {
   },
   xaxis: {
     type: "category",
-    categories: [
-      "Sep", "Oct", "Nov", "Dec", "Jan", "Feb",
-      "Mar", "Apr", "May", "Jun", "Jul", "Aug",
-    ],
+    categories: generateMonthCategories(),
     axisBorder: {
       show: false,
     },
@@ -102,7 +102,7 @@ const options: ApexOptions = {
       },
     },
     min: 0,
-    max: 200,
+    max: 50,
   },
 };
 
@@ -114,7 +114,24 @@ interface ChartOneState {
 }
 
 const TimeSeriesChart: React.FC = () => {
-  const series: ChartOneState['series'] = [
+
+  const { timeSeries } = useContext(DataContext);
+  const timeSeriesData: ChartOneState['series'] = timeSeries
+  ? [
+    {
+      name: "Positive Review",
+      data: timeSeries[0].data,
+    },
+    {
+      name: "Negative Review",
+      data: timeSeries[1].data,
+    },
+    {
+      name: "Neutral Review",
+      data: timeSeries[2].data,
+    },
+  ]
+  : [
     {
       name: "Positive Review",
       data: [30, 25, 36, 30, 45, 35, 64, 52, 59, 36, 39, 51],
@@ -164,7 +181,7 @@ const TimeSeriesChart: React.FC = () => {
         <div id="chartOne" className="-ml-5">
           <ReactApexChart
             options={options}
-            series={series}
+            series={timeSeriesData}
             type="area"
             height={350}
             width={"100%"}

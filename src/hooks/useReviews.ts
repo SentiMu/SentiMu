@@ -16,17 +16,24 @@ export function useTotalScore() {
     });
 }
 
+export function useOverview() {
+    return useQuery({
+        queryKey: ["overview"],
+        queryFn: ReviewsApi.getOverview,
+    });
+}
+
+export function useTimeSeries() {
+    return useQuery({
+        queryKey: ["timeSeries"],
+        queryFn: ReviewsApi.getTimeSeries,
+    });
+}
+
 export function useReviewsCount() {
     return useQuery({
         queryKey: ["reviewsCount"],
         queryFn: ReviewsApi.getReviewsCount,
-    });
-}
-
-export function useRepeatingReviews() {
-    return useQuery({
-        queryKey: ["duplicateReviewers"],
-        queryFn: ReviewsApi.getRepeatingReviews,
     });
 }
 
@@ -37,9 +44,9 @@ export function useWordCloud() {
     });
 }
 
-export function useOverview() {
+export function useRepeatingReviews() {
     return useQuery({
-        queryKey: ["overview"],
-        queryFn: ReviewsApi.getOverview,
+        queryKey: ["duplicateReviewers"],
+        queryFn: ReviewsApi.getRepeatingReviews,
     });
 }

@@ -13,6 +13,25 @@ export interface CountResponse {
     reviews_count: number;
 }
 
+export interface OverviewData {
+    positive: number;
+    negative: number;
+    neutral: number;
+}
+
+export interface OverviewResponse {
+    status: OverviewData;
+}
+
+export interface TimeSeriesData {
+    name: string;
+    data: number[];
+}
+
+export interface TimeSeriesResponse {
+    time_series: TimeSeriesData[];
+}
+
 export interface ReviewData {
     id: string
     name: string;
@@ -26,6 +45,16 @@ export interface RecentReviewResponse {
     reviews: ReviewData[];
 }
 
+export interface WordCloudData {
+    x: string;
+    y: number;
+    color: string | undefined;
+}
+
+export interface WordCloudResponse {
+    word_cloud: WordCloudData[];
+}
+
 export interface RepeatingReviewsData{
     name: string;
     review_count: number;
@@ -37,24 +66,4 @@ export interface RepeatingReviewsData{
 
 export interface RepeatingReviewsResponse {
     duplicate_reviewers: RepeatingReviewsData[];
-}
-
-export interface WordCloudData {
-    x: string;
-    y: number;
-    color: string | undefined;
-}
-
-export interface WordCloudResponse {
-    word_cloud: WordCloudData[];
-}
-
-export interface OverviewData {
-    positive: number;
-    negative: number;
-    neutral: number;
-}
-
-export interface OverviewResponse {
-    status: OverviewData;
 }

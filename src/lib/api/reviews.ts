@@ -8,7 +8,8 @@ import {
     CountResponse, 
     RepeatingReviewsResponse,
     WordCloudResponse,
-    OverviewResponse
+    OverviewResponse,
+    TimeSeriesResponse
 } from "./types";
 
 const API_BASE_URL =
@@ -43,6 +44,26 @@ export class ReviewsApi {
         }
     }
 
+    static async getOverview(): Promise<ApiResponse<OverviewResponse>> {
+        try {
+            const response = await apiClient.get<OverviewResponse>("/overview");
+            return { data: response.data, error: null };
+        } catch (error) {
+            console.error("Error fetching overview:", error);
+            return { data: null, error: "Failed to fetch overview" };
+        }
+    }
+
+    static async getTimeSeries(): Promise<ApiResponse<TimeSeriesResponse>> {
+        try {
+            const response = await apiClient.get<TimeSeriesResponse>("/time-series");
+            return { data: response.data, error: null };
+        } catch (error) {
+            console.error("Error fetching time series:", error);
+            return { data: null, error: "Failed to fetch time series" };
+        }
+    }
+
     static async getRecentReviews(
         count: number = 5
     ): Promise<ApiResponse<RecentReviewResponse>> {
@@ -57,16 +78,6 @@ export class ReviewsApi {
         }
     }
 
-    static async getRepeatingReviews(): Promise<ApiResponse<RepeatingReviewsResponse>> {
-        try {
-            const response = await apiClient.get<RepeatingReviewsResponse>("/duplicate-reviews");
-            return { data: response.data, error: null };
-        } catch (error) {
-            console.error("Error fetching duplicate reviewers:", error);
-            return { data: null, error: "Failed to fetch duplicate reviewers" };
-        }
-    }
-
     static async getWordCloud(): Promise<ApiResponse<WordCloudResponse>> {
         try {
             const response = await apiClient.get<WordCloudResponse>("/word-cloud");
@@ -77,13 +88,13 @@ export class ReviewsApi {
         }
     }
 
-    static async getOverview(): Promise<ApiResponse<OverviewResponse>> {
+    static async getRepeatingReviews(): Promise<ApiResponse<RepeatingReviewsResponse>> {
         try {
-            const response = await apiClient.get<OverviewResponse>("/overview");
+            const response = await apiClient.get<RepeatingReviewsResponse>("/duplicate-reviews");
             return { data: response.data, error: null };
         } catch (error) {
-            console.error("Error fetching overview:", error);
-            return { data: null, error: "Failed to fetch overview" };
+            console.error("Error fetching duplicate reviewers:", error);
+            return { data: null, error: "Failed to fetch duplicate reviewers" };
         }
     }
 }
