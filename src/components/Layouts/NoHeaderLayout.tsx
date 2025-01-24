@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import Sidebar from "@/components/Sidebar";
 
-export default function AboutLayout({
+export default function NoHeaderLayout({
   children,
 }: {
   children: React.ReactNode;

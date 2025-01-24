@@ -1,5 +1,5 @@
 import { Metadata } from "next";
-import AboutLayout from "@/components/Layouts/AboutLayout";
+import NoHeaderLayout from "@/components/Layouts/NoHeaderLayout";
 import About from "@/components/Pages/AboutPage";
 
 export const metadata: Metadata = {
@@ -11,9 +11,9 @@ export const metadata: Metadata = {
 export default function Home() {
   return (
     <>
-      <AboutLayout>
+      <NoHeaderLayout>
         <About />
-      </AboutLayout>
+      </NoHeaderLayout>
     </>
   );
 }

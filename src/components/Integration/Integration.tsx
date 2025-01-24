@@ -34,7 +34,6 @@ export function Integration({
     const maps = useRef<HTMLDivElement>(null);
     const tiktok = useRef<HTMLDivElement>(null);
     const instagram = useRef<HTMLDivElement>(null);
-    const telegram = useRef<HTMLDivElement>(null);
     const sentimu = useRef<HTMLDivElement>(null);
     const user = useRef<HTMLDivElement>(null);
 
@@ -59,9 +58,6 @@ export function Integration({
                     </Circle>
                     <Circle ref={instagram}>
                         <Icons.instagram />
-                    </Circle>
-                    <Circle ref={telegram}>
-                        <Icons.telegram />
                     </Circle>
                 </div>
                 <div className="flex flex-col justify-center">
@@ -95,11 +91,6 @@ export function Integration({
                 containerRef={container}
                 fromRef={instagram}
                 toRef={instagram}
-            />
-            <AnimatedBeam
-                containerRef={container}
-                fromRef={telegram}
-                toRef={telegram}
             />
             <AnimatedBeam
                 containerRef={container}

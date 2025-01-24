@@ -2,10 +2,17 @@
 import { useQuery } from "@tanstack/react-query";
 import { ReviewsApi } from "@/lib/api/reviews";
 
-export function useRecentReviews(count: number = 5) {
+export function useSetTargetWord(word: string) {
     return useQuery({
-        queryKey: ["latestReviews", count],
-        queryFn: () => ReviewsApi.getRecentReviews(count),
+        queryKey: ["setTargetWord"],
+        queryFn: () => ReviewsApi.setTargetWord(word),
+    })
+}
+
+export function useRecentReviews() {
+    return useQuery({
+        queryKey: ["latestReviews"],
+        queryFn: () => ReviewsApi.getRecentReviews(),
     });
 }
 

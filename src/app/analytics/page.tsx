@@ -10,10 +10,10 @@ export const metadata: Metadata = {
 
 export default function Home() {
   return (
-    <>
+    <div className="overflow-y-hidden">
       <DefaultLayout>
         <Dashboard />
       </DefaultLayout>
-    </>
+    </div>
   );
 }

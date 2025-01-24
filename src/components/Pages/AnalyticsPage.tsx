@@ -6,7 +6,7 @@ import CardDataStats from "../CardDataStats";
 import RecentReviews from "../Tables/RecentReview";
 import WordCloud from "../WordCloud/WordCloud";
 import OverviewChart from "../Charts/OverviewChart";
-import { UserIcon, StarIcon, EyeIcon, TrendIcon } from "../../assets/Assets";
+import { UserIcon, StarIcon } from "../../assets/Assets";
 import { Star, StarHalf } from 'lucide-react';
 import { useTotalScore, useReviewsCount } from '@/hooks/useReviews';
 
@@ -31,19 +31,13 @@ const Dashboard: React.FC = () => {
   };
 
   return (
-    <>
-      <div className="grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-6 xl:grid-cols-4 2xl:gap-7.5">
+    <div className="overflow-y-hidden">
+      <div className="grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-6 xl:grid-cols-2 2xl:gap-7.5">
         <CardDataStats title="Rating" total={scoreData?.data?.total_score} image={renderStars(scoreData?.data?.total_score)} rate="0.95%" levelUp>
           <StarIcon className="fill-primary dark:fill-white" />
         </CardDataStats>
         <CardDataStats title="Total Review" total={countData?.data?.reviews_count} rate="3.78%" levelUp>
           <UserIcon className="fill-primary dark:fill-white" />
-        </CardDataStats>
-        <CardDataStats title="Total Visitor" total={countData?.data?.reviews_count} rate="1.31%" levelUp>
-          <EyeIcon className="fill-primary dark:fill-white" />
-        </CardDataStats>
-        <CardDataStats title="Quarter Trend" total={countData?.data?.reviews_count} levelDown>
-          <TrendIcon className="fill-primary dark:fill-white" />
         </CardDataStats>
       </div>
 
@@ -60,7 +54,7 @@ const Dashboard: React.FC = () => {
           <RepeatingReviewers />
         </div>
       </div>
-    </>
+    </div>
   );
 };
 

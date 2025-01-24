@@ -37,14 +37,14 @@ const WordCloud: React.FC = () => {
     };
 
     return (
-        <div className="col-span-12 rounded-sm border h-full border-stroke bg-white p-5 shadow-default dark:border-strokedark dark:bg-boxdark xl:col-span-4">
+        <div className="col-span-12 overflow-y-hidden flex flex-col rounded-sm border h-full border-stroke bg-white p-5 shadow-default dark:border-strokedark dark:bg-boxdark xl:col-span-4">
             <div className="mb-6">
                 <h4 className="text-xl font-semibold text-black dark:text-white">
                     Word Cloud
                 </h4>
             </div>
 
-            <div className="h-80">
+            <div className="h-80 my-auto">
                 <ReactApexChart
                     options={options}
                     series={options.series}

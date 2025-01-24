@@ -5,6 +5,10 @@ export interface ApiResponse<T> {
     error: string | null;
 }
 
+export interface SetTargetWordResponse {
+    message: string;
+}
+
 export interface ScoreResponse {
     total_score: number;
 }
@@ -60,6 +64,7 @@ export interface RepeatingReviewsData{
     review_count: number;
     latest_review_date: string;
     status: string | undefined;
+    reasons: string[];
     image_url: string;
     reviews: ReviewData[];
 }

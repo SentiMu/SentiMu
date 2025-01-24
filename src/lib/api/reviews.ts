@@ -3,6 +3,7 @@
 import axios from "axios";
 import { 
     ApiResponse, 
+    SetTargetWordResponse,
     RecentReviewResponse, 
     ScoreResponse, 
     CountResponse, 
@@ -24,6 +25,17 @@ const apiClient = axios.create({
 });
 
 export class ReviewsApi {
+    static async setTargetWord(word: string): Promise<ApiResponse<SetTargetWordResponse>> {
+        try {
+            const response = await apiClient.post<SetTargetWordResponse>("/set-target-word", { word });
+            return { data: response.data, error: null };
+        } catch (error) {
+            console.error("Error setting target word:", error);
+            return { data: null, error: "Failed to set target word" };
+        }
+    }
+
+    
     static async getTotalScore(): Promise<ApiResponse<ScoreResponse>> {
         try {
             const response = await apiClient.get<ScoreResponse>("/total-score");
@@ -65,12 +77,9 @@ export class ReviewsApi {
     }
 
     static async getRecentReviews(
-        count: number = 5
     ): Promise<ApiResponse<RecentReviewResponse>> {
         try {
-            const response = await apiClient.get<RecentReviewResponse>(
-                `/latest-reviews/${count}`
-            );
+            const response = await apiClient.get<RecentReviewResponse>("/latest-reviews");
             return { data: response.data, error: null };
         } catch (error) {
             console.error("Error fetching latest reviews:", error);

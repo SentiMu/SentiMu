@@ -35,10 +35,10 @@ const RecentReviews: React.FC = () => {
                 </div>
             </div>
 
-            <div className="flex flex-col gap-5">
+            <div className="flex flex-col gap-5 h-80 overflow-y-auto pr-2">
                 {recentReviewsData.map((review) => (
                     <div key={review.id} className="flex items-start gap-4.5">
-                        <div className="h-10 w-10 rounded-full">
+                        <div className="h-10 w-10 rounded-full flex-shrink-0">
                             <Image src={review.image_url} alt={review.name} className="rounded-full" width={50} height={50} />
                         </div>
 
@@ -47,7 +47,7 @@ const RecentReviews: React.FC = () => {
                                 <h5 className="font-medium text-black dark:text-white">
                                     {review.name}
                                 </h5>
-                                <p className="mt-1 text-sm">{review.text}</p>
+                                <p className="mt-1 text-sm max-w-115">{review.text}</p>
                                 <div className="mt-2 flex items-center gap-1">
                                     {renderStars(review.rating)}
                                 </div>

@@ -47,7 +47,7 @@ export default function RootLayout({
 function DataProvider({ children }: { children: React.ReactNode }) {
   const { data: overviewData, isLoading: isLoadingOverview } = useOverview();
   const { data: timeSeriesData, isLoading: isLoadingTimeSeries } = useTimeSeries();
-  const { data: reviewsData, isLoading: isLoadingReviews } = useRecentReviews(5);
+  const { data: reviewsData, isLoading: isLoadingReviews } = useRecentReviews();
   const { data: wordCloudData, isLoading: isLoadingWordCloud } = useWordCloud();
   const { data: repeatingReviewsData, isLoading: isLoadingRepeatingReviews } = useRepeatingReviews();
 
